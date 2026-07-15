@@ -219,12 +219,13 @@ function atualizarContador() {
   const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
   const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
   const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+  const segundos = Math.floor((diferenca / 1000) % 60);
 
-  contador.innerHTML = `✈️ Faltam <b>${dias}</b>d, <b>${horas}</b>h e <b>${minutos}</b>min`;
+  contador.innerHTML = `✈️ Faltam <b>${dias}</b>d, <b>${horas}</b>h, <b>${minutos}</b>min e <b>${segundos}</b>s para a viagem!`;
 }
-
+// Atualiza o contador a cada 1ms para garantir que os segundos mudem exatamente no momento certo.
 atualizarContador();
-setInterval(atualizarContador, 60000);
+setInterval(atualizarContador, 1);
 
 // ==============================
 // CARROSSEIS DOS DIAS (dinâmicos)
